@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+ 
+<div ng-app="EmpCRUD">
+<div ng-controller="crud_Controller">
+    <div class="container">
+        <div class="panel panel-primary">
+      <div class="panel-heading">Emp List</div>
+      <div class="panel-body">
+
+ <table class="table table-hover">
+            <tr>
+                <td><b>Emp_Id</b></td>
+                <td><b>Emp_Name</b></td>
+                <td><b>Emp_City</b></td>
+                <td><b>Emp_Age</b></td>
+            </tr>
+            <tr ng-repeat="emp in emps">
+                <td>
+                    {{emp.Emp_Id}}
+                </td>
+                <td>
+                    {{emp.EmpName}}
+                </td>
+                <td>
+                    {{emp.EmpCity}}
+                </td>
+                <td>
+                    {{emp.EmpAge }}
+                </td>
+                
+                <td>
+                    <span ng-click="editEmp(emp)" class="btn btn-primary">Edit</span>
+                    <span ng-click="deleteEmp(emp)" class="btn btn-danger">Delete</span>
+                </td>
+            </tr>
+        </table>
+      </div>
+    </div>
+       
+    </div>
+    <span ng-click="AddEmpDiv()" class="btn btn-default" >
+        Add Book
+    </span>
+    <div ng-show="divEmp">
+        <p class="divHead"></p>
+        <table class="table">
+            <tr>
+                <td><b><i>{{Action}} Emp</i></b></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr> 
+            <tr>
+                <td><b>EmpId</b></td>
+                <td>
+                    <input type="text" disabled="disabled" ng-model="Emp_Id" />
+                </td>
+                <td><b>EmpName</b></td>
+                <td>
+                    <input type="text" ng-model="EmpName" />
+                </td>
+            </tr>           
+            <tr>
+                <td><b>EmpCity</b></td>
+                <td>
+                    <input type="text" ng-model="EmpCity" />
+                </td>
+                <td><b>EmpAge</b></td>
+                <td>
+                    <input type="text" ng-model="EmpAge" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td >
+                    <input type="button" class="btn btn-default" value="Save" ng-click="AddUpdateEmp()" />
+                    <input type="button" class="btn btn-danger" value="Cancel" ng-click="Cancel()" />
+                </td>
+            </tr>
+        </table>        
+    </div>
+</div>
+</div>

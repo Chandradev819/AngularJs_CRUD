@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="Database1Model.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="Emp_Id" ColumnName="Emp_Id" />
+          <ScalarProperty Name="Emp_Name" ColumnName="Emp_Name" />
+          <ScalarProperty Name="Emp_City" ColumnName="Emp_City" />
+          <ScalarProperty Name="Emp_Age" ColumnName="Emp_Age" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDepts">
+      <EntityTypeMapping TypeName="Database1Model.tblDept">
+        <MappingFragment StoreEntitySet="tblDept">
+          <ScalarProperty Name="DeptDesc" ColumnName="DeptDesc" />
+          <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DeleteDept" FunctionName="Database1Model.Store.DeleteDept" />
+    <FunctionImportMapping FunctionImportName="FetchDept_OnId" FunctionName="Database1Model.Store.FetchDept_OnId" />
+    <FunctionImportMapping FunctionImportName="FetchDeptDetails" FunctionName="Database1Model.Store.FetchDeptDetails" />
+    <FunctionImportMapping FunctionImportName="InsertDept" FunctionName="Database1Model.Store.InsertDept" />
+    <FunctionImportMapping FunctionImportName="UpdateDept" FunctionName="Database1Model.Store.UpdateDept" />
+  </EntityContainerMapping>
+</Mapping>

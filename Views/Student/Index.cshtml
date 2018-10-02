@@ -1,0 +1,133 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<style type="text/css">     
+      table.myTable { border-collapse:collapse; }     
+     table.myTable td, table.myTable th { border:1px solid black;padding:2px; }     
+   </style> 
+
+<div data-ng-app="myApp">
+    <div data-ng-controller="MyController">
+        <form name="EmpForm" data-ng-submit="submit()" novalidate>
+            <table class="myTable">
+                <tr>
+                    <td>
+                        <h3>Emp Details111</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       EmpId:
+                    </td>
+                    <td>
+                      <input name="EmployeeId" data-ng-model="User.EmpID" required="" type="number" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        First Name :
+                    </td>
+                    <td>
+                        <input type="text" name="FistName" data-ng-model="User.FirstName" required data-ng-minlength="5" data-ng-maxlength="8" />
+
+                    </td>
+                    <td>
+                        <span ng-if="submitted">
+                            <span ng-if="EmpForm.FistName.$error.required">Required</span>
+                            <span ng-if="EmpForm.FistName.$error.minlength">should be more than 5</span>
+                             <span ng-if="EmpForm.FistName.$error.maxlength">should be more than 8</span>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Last Name :
+                    </td>
+                    <td>
+                        <input type="text" name="LastName" data-ng-model="User.LastName" required data-ng-minlength="5" data-ng-maxlength="8" />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Age :
+                    </td>
+                    <td>
+                        <input  name="Age" data-ng-model="User.Age" type="number" />
+
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        EmailId :
+                    </td>
+                    <td>
+                        <input  name="EmailId" data-ng-model="User.EmailId" type="email" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Gender :
+                    </td>
+                    <td>
+                        <input type="radio" data-ng-model="User.Gender" value="Male" />Male
+                        <input type="radio" data-ng-model="User.Gender" value="Female" />Female
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>Position :</td>
+                    <td>
+                       <select data-ng-model="User.Position1" data-ng-options="obj.Id as obj.Name for obj in Positions">
+                           <option value="">--Select--</option>
+                       </select>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        Languages:
+                    </td>
+                    <td>
+                        <select multiple="multiple" data-ng-model="User.Language1" data-ng-options="obj.Id as obj.name for obj in Languages"></select>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td> 
+                    <td>
+                        <input type="submit" name="btnSave" data-ng-click="Update(User)"  value="Save" />
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+
+    </div>
+</div>
+<script src="~/Scripts/angular.min.js"></script>
+<script>
+     angular.module("myApp", [])
+    .controller("MyController", function ($scope) {
+        $scope.User = {};
+        $scope.Positions = [
+            { Id: 1, Name: "Developer" },
+            { Id: 2, Name: "Team Lead" },
+            { Id: 3, Name: "Technocal Analyst" },
+            { Id: 4, Name: "Project Manager" }
+        ];
+
+        $scope.Languages = [
+            { Id: "1", name: "C#" },
+            { Id: "2", name: "Vb.net" },
+            { Id: "3", name: "F#" },
+            { Id: "4", name: "C" },
+            { Id: "5", name: "Cobal" }
+        ];
+        $scope.submit = function () { $scope.submitted = true; };
+        $scope.Update = function (user) {
+            alert(JSON.stringify(user));
+        }
+    });
+</script>

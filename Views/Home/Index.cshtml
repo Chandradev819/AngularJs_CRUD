@@ -1,0 +1,119 @@
+﻿@{  
+    ViewBag.Title = "Index";  
+}
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div>
+    <div  class="divList">
+        <form data-ng-app="myapp" data-ng-controller="MyController" ng-submit="InsertData()" data-ng-init="GetAllData()"  name="myForm" novalidate >
+        <div class="container">
+        <div class="panel panel-primary">
+      <div class="panel-heading">Emp List</div>
+      <div class="panel-body">
+           <table cellpadding="12" class="table table-bordered table-hover">
+            <tr>
+                <td>
+                    <b>ID</b>
+                </td>
+                <td>
+                    <b>Name</b>
+                </td>
+                <td>
+                    <b>City</b>
+                </td>
+                <td>
+                    <b>Age</b>
+                </td>
+                <td>
+                    <b>Actions</b>
+                </td>
+            </tr>
+            <tr data-ng-repeat="Emp in employees">
+                <td>{{Emp.Emp_Id}}  
+                </td>
+                <td>{{Emp.Emp_Name}}  
+                </td>
+                <td>{{Emp.Emp_City}}  
+                </td>
+                <td>{{Emp.Emp_Age}}  
+                </td>
+                <td>
+                    <input type="button" class="btn btn-warning" value="Update" data-ng-click="UpdateEmp(Emp)" />
+                    <input type="button" class="btn btn-danger" value="Delete" data-ng-click="DeleteEmp(Emp)" />
+                </td>
+            </tr>
+        </table>
+          </div>
+
+       </div>
+       
+            <div class="container">
+        <div class="panel panel-primary">
+      <div class="panel-heading">Emp Entry Screen</div>
+      <div class="panel-body">
+        <div class="form-horizontal" role="form">
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Name:</label>
+                            <div class="col-md-8">
+                                <input type="text" name="name"  placeholder="Name" data-ng-model="EmpName" data-ng-required="true" >
+                                 <span ng-show="myForm.$submitted || myForm.name.$touched">
+                              <span style="color:red" ng-show="myForm.name.$error.required">Name Required</span>
+                              </span>
+              
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">City:</label>
+                            <div class="col-md-8">
+                                <input type="text"  id="inputEmpCity" required placeholder="City" name="EmpCity" data-ng-model="EmpCity">
+                                <span ng-show="myForm.$submitted || myForm.EmpCity.$touched">
+                              <span style="color:red" ng-show="myForm.EmpCity.$error.required">City Required</span>
+                              </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Age:</label>
+                            <div class="col-md-8">
+                                <input type="text" required  id="inputEmpAge" name="Age" placeholder="Age" data-ng-model="EmpAge">
+                                <span ng-show="myForm.$submitted || myForm.Age.$touched">
+                              <span style="color:red" ng-show="myForm.Age.$error.required">Age Required</span>
+                              </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label"></div>
+                            <div class="col-md-6">
+                                 <input type="submit" value="Submit" id="btnSave" class="btn btn-info" data-ng-disabled=" myForm.name.$invalid ||myForm.Age.$invalid ||myForm.City.$invalid  " />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+          </div>
+    
+    @Html.Hidden("EmpID_")
+
+</div>
+        </div>
+       </div>
+        </form>
+        </div>
+    </div>

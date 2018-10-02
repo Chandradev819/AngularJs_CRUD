@@ -1,0 +1,14 @@
+﻿@model AngularCRUD.Models.Students
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+StudentId:      @Html.Editor("StudentId")
+Student Name:   @Html.Editor("StudentName")
+Age:            @Html.Editor("Age")
+Password:       @Html.Editor("Password")
+isNewlyEnrolled: @Html.Editor("isNewlyEnrolled")
+Gender:         @Html.Editor("Gender")
+DoB:            @Html.Editor("DoB")

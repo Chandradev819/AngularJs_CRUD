@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div>
+    <form data-ng-app="DemoApp" data-ng-controller="DeptController" data-ng-submit="InsertData()" data-ng-init="GetAllData()"  name="myForm" novalidate >
+      <br />
+        <br />
+        <div class="container">
+        <div class="panel panel-primary">
+      <div class="panel-heading">Dept List</div>
+      <div class="panel-body">
+           <table cellpadding="12" class="table table-bordered table-hover">
+            <tr>
+                <td>
+                    <b>ID</b>
+                </td>
+                <td>
+                    <b>DeptName</b>
+                </td>
+                <td>
+                    <b>Decscription</b>
+                </td>
+                
+                <td>
+                    <b>Actions</b>
+                </td>
+            </tr>
+            <tr data-ng-repeat="dept in Depts">
+                <td>{{dept.Id}}  
+                </td>
+                <td>{{dept.DeptName}}  
+                </td>
+                <td>{{dept.DeptDesc}}  
+                </td>
+                
+                <td>
+                    <input type="button" class="btn btn-warning" value="Update" data-ng-click="UpdateDept(dept)" />
+                    <input type="button" class="btn btn-danger" value="Delete" data-ng-click="DeleteDept(dept)" />
+                </td>
+            </tr>
+        </table>
+          </div>
+       </div>
+      </div> 
+       <div class="container">
+        <div class="panel panel-primary">
+      <div class="panel-heading">Dept Entry Screen</div>
+      <div class="panel-body">
+        <div class="form-horizontal" role="form">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Dept Name:</label>
+                            <div class="col-md-8">
+                                <input type="text" name="name"  placeholder="Name" data-ng-model="DeptName" data-ng-required="true" >
+                                 <span ng-show="myForm.$submitted || myForm.name.$touched">
+                              <span style="color:red" ng-show="myForm.name.$error.required">Name Required</span>
+                              </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Dept Desc:</label>
+                            <div class="col-md-8">
+                                <input type="text"  id="inputDeptDesc" required placeholder="Description" name="DeptDesc" data-ng-model="DeptDesc">
+                                <span ng-show="myForm.$submitted || myForm.DeptDesc.$touched">
+                              <span style="color:red" ng-show="myForm.DeptDesc.$error.required">Desc Required</span>
+                              </span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label"></div>
+                            <div class="col-md-6">
+                                 <input type="submit" value="Submit" id="btnSave" class="btn btn-info" data-ng-disabled=" myForm.name.$invalid ||myForm.DeptDesc.$invalid " />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+          </div>
+    
+    @Html.Hidden("DeptID_")
+
+ </div>
+ </div>
+ </form> 
+        
+</div>
+
